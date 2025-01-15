@@ -14,14 +14,14 @@ build:
     - new-conda-env = new_conda_env.cli:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - conda
 
 test:
@@ -32,6 +32,7 @@ test:
     - new-conda-env --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/CatChenal/new_conda_env
